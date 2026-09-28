@@ -12,6 +12,50 @@ from src.world.graph_loader import load_airport_graph, node_positions
 from src.world.scenario_loader import build_initial_state, load_scenarios
 
 st.set_page_config(page_title="AI Airport Emergency & Security Simulator", layout="wide")
+STYLE = """
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap');
+
+html, body, [class*="css"] { font-family: 'Space Grotesk', sans-serif; }
+.stApp { background-color: #0A0F1C; }
+section[data-testid="stSidebar"] { background-color: #0D1424; border-right: 1px solid #1F2937; }
+
+h1, h2, h3 { font-family: 'Space Grotesk', sans-serif; letter-spacing: -0.01em; }
+h1 { font-weight: 700; color: #F1F5F9; }
+
+.mono { font-family: 'JetBrains Mono', monospace; }
+
+.status-strip {
+    display: flex; align-items: center; gap: 28px;
+    padding: 14px 20px; margin: 6px 0 22px 0;
+    background: #111826; border: 1px solid #1F2937; border-radius: 10px;
+}
+.status-badge {
+    display: flex; align-items: center; gap: 9px;
+    padding: 6px 14px; border-radius: 999px; font-weight: 600; font-size: 0.9rem;
+}
+.status-dot { width: 9px; height: 9px; border-radius: 50%; }
+.status-nominal { background: rgba(52,211,153,0.12); color: #34D399; }
+.status-nominal .status-dot { background: #34D399; box-shadow: 0 0 8px #34D399; }
+.status-monitoring { background: rgba(251,191,36,0.12); color: #FBBF24; }
+.status-monitoring .status-dot { background: #FBBF24; box-shadow: 0 0 8px #FBBF24; }
+.status-active { background: rgba(248,113,113,0.14); color: #F87171; }
+.status-active .status-dot { background: #F87171; box-shadow: 0 0 8px #F87171; }
+
+.kpi { flex: 1; }
+.kpi-label { font-size: 0.78rem; color: #7C8AA3; margin-bottom: 2px; }
+.kpi-value { font-family: 'JetBrains Mono', monospace; font-size: 1.35rem; font-weight: 600; color: #E5E9F0; }
+.kpi-divider { width: 1px; height: 34px; background: #1F2937; }
+
+.stTabs [data-baseweb="tab-list"] { gap: 4px; }
+.stTabs [data-baseweb="tab"] {
+    background-color: #111826; border: 1px solid #1F2937; border-radius: 8px 8px 0 0;
+    color: #7C8AA3; font-family: 'Space Grotesk', sans-serif; font-weight: 500;
+}
+.stTabs [aria-selected="true"] { color: #38BDF8 !important; border-bottom: 2px solid #38BDF8 !important; }
+</style>
+"""
+st.markdown(STYLE, unsafe_allow_html=True)
 
 BG = "#0B1220"
 TEXT = "#CBD5E1"
@@ -260,7 +304,34 @@ def module_summary(result):
         ("Face Recognition", "Not connected yet"),
     ]
     return pd.DataFrame(rows, columns=["Module", "Decision"])
+def system_status(state, result):
+    if not state.active_incidents:
+        return "nominal", "Nominal", "All systems normal"
+    severities = [i.severity for i in state.active_incidents]
+    if "high" in severities:
+        return "active", "Active Response", f"{len(state.active_incidents)} incident(s) in progress"
+    return "monitoring", "Monitoring", f"{len(state.active_incidents)} incident(s) tracked"
 
+
+def render_status_strip(state, result):
+    level, label, detail = system_status(state, result)
+    responders = len(result.ga_assignment["rows"]) if result.ga_assignment else 0
+    threat = result.minimax_outcome["outcome"] if result.minimax_outcome else "none"
+    html = f'''
+    <div class="status-strip">
+        <div class="status-badge status-{level}"><div class="status-dot"></div>{label}</div>
+        <div class="mono" style="color:#7C8AA3; font-size:0.85rem;">{detail}</div>
+        <div style="flex:1"></div>
+        <div class="kpi"><div class="kpi-label">Active incidents</div><div class="kpi-value">{len(state.active_incidents)}</div></div>
+        <div class="kpi-divider"></div>
+        <div class="kpi"><div class="kpi-label">Blocked nodes</div><div class="kpi-value">{len(state.blocked_nodes)}</div></div>
+        <div class="kpi-divider"></div>
+        <div class="kpi"><div class="kpi-label">Responders deployed</div><div class="kpi-value">{responders}</div></div>
+        <div class="kpi-divider"></div>
+        <div class="kpi"><div class="kpi-label">Threat status</div><div class="kpi-value">{threat}</div></div>
+    </div>
+    '''
+    st.markdown(html, unsafe_allow_html=True)
 
 def main():
     st.title("AI Airport Emergency & Security Management Simulator")
@@ -278,7 +349,12 @@ def main():
 
     state = build_initial_state(graph, scenario_name)
     result = run_simulation(graph, state, scenario_name)
+    state = build_initial_state(graph, scenario_name)
+    result = run_simulation(graph, state, scenario_name)
 
+    render_status_strip(state, result)
+
+    col_map, col_side = st.columns([2.2, 1])
     col_map, col_side = st.columns([2.2, 1])
 
     with col_map:
