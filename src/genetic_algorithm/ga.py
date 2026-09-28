@@ -88,11 +88,17 @@ def crossover(parent_a, parent_b, rng):
 
 
 def mutate(chromosome, domains, rng, rate):
-    return [
-        rng.choice(domains[i]) if rng.random() < rate else gene
-        for i, gene in enumerate(chromosome)
-    ]
-
+    child = list(chromosome)
+    for i in range(len(child)):
+        if rng.random() >= rate:
+            continue
+        if rng.random() < 0.5:
+            j = rng.randrange(len(child))
+            if child[j] in domains[i] and child[i] in domains[j]:
+                child[i], child[j] = child[j], child[i]
+                continue
+        child[i] = rng.choice(domains[i])
+    return child
 
 def run_ga(graph, state, incidents=None, config=None):
     t0 = perf_counter()
