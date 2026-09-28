@@ -1,0 +1,12 @@
+agent_id,type,home_node,status,authorization_level
+SEC_1,security,CP_1,idle,security
+SEC_2,security,CP_2,idle,security
+SEC_3,security,CP_3,idle,security
+EMS_TEAM_1,emergency,EMS_1,idle,emergency
+EMS_TEAM_2,emergency,EMS_2,idle,emergency
+STAFF_1,staff,STAFF_1,idle,staff
+STAFF_2,staff,STAFF_2,idle,staff
+PAX_1,passenger,G1_1,idle,passenger
+PAX_2,passenger,G2_3,idle,passenger
+PAX_3,passenger,G3_5,idle,passenger
+PAX_4,passenger,TERM_2,idle,passenger

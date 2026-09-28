@@ -1,0 +1,65 @@
+{
+  "scenario_1_normal": {
+    "label": "Scenario 1 - Normal Operation",
+    "description": "No emergency. Baseline airport state for comparison.",
+    "blocked_nodes": [],
+    "threat_location": null,
+    "active_incidents": []
+  },
+  "scenario_2_blocked_corridor": {
+    "label": "Scenario 2 - Blocked Corridor",
+    "description": "Corridor COR_6 is blocked. A* must recalculate routes that used it.",
+    "blocked_nodes": ["COR_6"],
+    "threat_location": null,
+    "active_incidents": [
+      {
+        "incident_id": "INC_1",
+        "type": "corridor_blocked",
+        "location_node": "COR_6",
+        "severity": "medium"
+      }
+    ]
+  },
+  "scenario_3_security_threat": {
+    "label": "Scenario 3 - Security Threat",
+    "description": "A security threat has appeared near Terminal 2 and the adjacent restricted zone.",
+    "blocked_nodes": [],
+    "threat_location": "RESTRICTED_1",
+    "active_incidents": [
+      {
+        "incident_id": "INC_2",
+        "type": "threat",
+        "location_node": "RESTRICTED_1",
+        "severity": "high"
+      }
+    ]
+  },
+  "scenario_4_evacuation": {
+    "label": "Scenario 4 - Evacuation",
+    "description": "Fire detected near Gate G1_2 in Terminal 1. Passengers must be routed to the nearest exit.",
+    "blocked_nodes": ["G1_2"],
+    "threat_location": null,
+    "active_incidents": [
+      {
+        "incident_id": "INC_3",
+        "type": "fire",
+        "location_node": "G1_2",
+        "severity": "high"
+      }
+    ]
+  },
+  "scenario_5_unauthorized_access": {
+    "label": "Scenario 5 - Unauthorized Access",
+    "description": "An unidentified person attempts to enter the restricted zone near Terminal 3.",
+    "blocked_nodes": [],
+    "threat_location": null,
+    "active_incidents": [
+      {
+        "incident_id": "INC_4",
+        "type": "unauthorized_access",
+        "location_node": "RESTRICTED_2",
+        "severity": "medium"
+      }
+    ]
+  }
+}
