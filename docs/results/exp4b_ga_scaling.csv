@@ -1,0 +1,4 @@
+strategy,mean_fitness,mean_time_ms
+Greedy (A* + CSP),3448.4,0.75
+"GA (population 60, 80 generations)",3325.8,54.77
+GA improvement over greedy,3.6%,"better 13, tie 14, worse 3 of 30"

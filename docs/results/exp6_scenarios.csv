@@ -1,0 +1,6 @@
+scenario,expected_actions,fired_actions,match,repeat_run_identical
+scenario_1_normal,none,none,True,True
+scenario_2_blocked_corridor,recalculate_routes,recalculate_routes,True,True
+scenario_3_security_threat,"dispatch_security, prioritize_emergency_response","dispatch_security, prioritize_emergency_response",True,True
+scenario_4_evacuation,"activate_evacuation, prioritize_emergency_response","activate_evacuation, prioritize_emergency_response",True,True
+scenario_5_unauthorized_access,trigger_security_alert,trigger_security_alert,True,True

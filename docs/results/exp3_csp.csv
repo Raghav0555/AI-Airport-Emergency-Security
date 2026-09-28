@@ -1,0 +1,4 @@
+strategy,requests,routes_delivered,requests_rejected,routes_with_violation,compliant_routes,violation_rate_pct,restricted_zone_violations,capacity_violations,mean_distance_delivered,mean_distance_paired,mean_plan_ms
+Baseline BFS,1000,845,155,415,430,49.1,100,380,616.8,537.9,0.009
+A* only,1000,845,155,427,418,50.5,100,414,558.9,490.2,0.026
+A* + CSP,1000,469,531,0,469,0.0,0,0,509.8,509.8,0.045

@@ -1,0 +1,4 @@
+configuration,correct_actions,unneeded_actions,missed_actions,precision,recall,f1
+Expert system,629,0,0,1.0,1.0,1.0
+No expert system (nothing triggered),0,0,629,1.0,0.0,0.0
+No expert system (trigger everything),629,1171,0,0.349,1.0,0.518

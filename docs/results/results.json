@@ -1,0 +1,661 @@
+{
+  "Experiment 1: Shortest path (BFS) vs Dijkstra vs A*": {
+    "exp1_pathfinding": [
+      {
+        "method": "BFS (fewest hops)",
+        "pairs": 1560,
+        "mean_distance": 612.2,
+        "mean_nodes_expanded": 21.0,
+        "mean_time_ms": 0.009,
+        "optimal_paths_pct": 66.5
+      },
+      {
+        "method": "Dijkstra",
+        "pairs": 1560,
+        "mean_distance": 545.28,
+        "mean_nodes_expanded": 21.0,
+        "mean_time_ms": 0.026,
+        "optimal_paths_pct": 100.0
+      },
+      {
+        "method": "A*",
+        "pairs": 1560,
+        "mean_distance": 545.28,
+        "mean_nodes_expanded": 10.6,
+        "mean_time_ms": 0.027,
+        "optimal_paths_pct": 100.0
+      }
+    ]
+  },
+  "Experiment 2: A* with vs without dynamic obstacle handling": {
+    "exp2_dynamic_summary": [
+      {
+        "strategy": "Static plan (no replanning)",
+        "trips": 827,
+        "routes_crossing_blocked_node": 273,
+        "unsafe_routes_pct": 33.0,
+        "rerouted_successfully": "-",
+        "unreachable": "-",
+        "mean_extra_distance": "-",
+        "mean_replan_ms": "-"
+      },
+      {
+        "strategy": "A* with replanning",
+        "trips": 827,
+        "routes_crossing_blocked_node": 0,
+        "unsafe_routes_pct": 0.0,
+        "rerouted_successfully": 80,
+        "unreachable": 193,
+        "mean_extra_distance": 160.0,
+        "mean_replan_ms": 0.025
+      }
+    ],
+    "exp2_dynamic_per_block": [
+      {
+        "blocked_node": "COR_1",
+        "trips": 65,
+        "routes_through_block": 11,
+        "unreachable_after_block": 11,
+        "mean_extra_distance": "-",
+        "mean_replan_ms": 0.047
+      },
+      {
+        "blocked_node": "COR_2",
+        "trips": 65,
+        "routes_through_block": 28,
+        "unreachable_after_block": 28,
+        "mean_extra_distance": "-",
+        "mean_replan_ms": 0.028
+      },
+      {
+        "blocked_node": "COR_3",
+        "trips": 65,
+        "routes_through_block": 22,
+        "unreachable_after_block": 6,
+        "mean_extra_distance": 150.0,
+        "mean_replan_ms": 0.019
+      },
+      {
+        "blocked_node": "COR_4",
+        "trips": 65,
+        "routes_through_block": 20,
+        "unreachable_after_block": 0,
+        "mean_extra_distance": 180.0,
+        "mean_replan_ms": 0.025
+      },
+      {
+        "blocked_node": "COR_5",
+        "trips": 65,
+        "routes_through_block": 34,
+        "unreachable_after_block": 34,
+        "mean_extra_distance": "-",
+        "mean_replan_ms": 0.022
+      },
+      {
+        "blocked_node": "COR_6",
+        "trips": 65,
+        "routes_through_block": 24,
+        "unreachable_after_block": 0,
+        "mean_extra_distance": 166.7,
+        "mean_replan_ms": 0.023
+      },
+      {
+        "blocked_node": "COR_7",
+        "trips": 65,
+        "routes_through_block": 26,
+        "unreachable_after_block": 6,
+        "mean_extra_distance": 140.0,
+        "mean_replan_ms": 0.02
+      },
+      {
+        "blocked_node": "COR_8",
+        "trips": 65,
+        "routes_through_block": 31,
+        "unreachable_after_block": 31,
+        "mean_extra_distance": "-",
+        "mean_replan_ms": 0.022
+      },
+      {
+        "blocked_node": "COR_9",
+        "trips": 65,
+        "routes_through_block": 16,
+        "unreachable_after_block": 16,
+        "mean_extra_distance": "-",
+        "mean_replan_ms": 0.03
+      },
+      {
+        "blocked_node": "COR_10",
+        "trips": 65,
+        "routes_through_block": 11,
+        "unreachable_after_block": 11,
+        "mean_extra_distance": "-",
+        "mean_replan_ms": 0.047
+      },
+      {
+        "blocked_node": "CP_1",
+        "trips": 59,
+        "routes_through_block": 14,
+        "unreachable_after_block": 14,
+        "mean_extra_distance": "-",
+        "mean_replan_ms": 0.029
+      },
+      {
+        "blocked_node": "CP_2",
+        "trips": 59,
+        "routes_through_block": 22,
+        "unreachable_after_block": 22,
+        "mean_extra_distance": "-",
+        "mean_replan_ms": 0.018
+      },
+      {
+        "blocked_node": "CP_3",
+        "trips": 59,
+        "routes_through_block": 14,
+        "unreachable_after_block": 14,
+        "mean_extra_distance": "-",
+        "mean_replan_ms": 0.029
+      }
+    ]
+  },
+  "Experiment 3: Baseline vs A* vs A* + CSP (ablation: remove CSP)": {
+    "exp3_csp": [
+      {
+        "strategy": "Baseline BFS",
+        "requests": 1000,
+        "routes_delivered": 845,
+        "requests_rejected": 155,
+        "routes_with_violation": 415,
+        "compliant_routes": 430,
+        "violation_rate_pct": 49.1,
+        "restricted_zone_violations": 100,
+        "capacity_violations": 380,
+        "mean_distance_delivered": 616.8,
+        "mean_distance_paired": 537.9,
+        "mean_plan_ms": 0.009
+      },
+      {
+        "strategy": "A* only",
+        "requests": 1000,
+        "routes_delivered": 845,
+        "requests_rejected": 155,
+        "routes_with_violation": 427,
+        "compliant_routes": 418,
+        "violation_rate_pct": 50.5,
+        "restricted_zone_violations": 100,
+        "capacity_violations": 414,
+        "mean_distance_delivered": 558.9,
+        "mean_distance_paired": 490.2,
+        "mean_plan_ms": 0.026
+      },
+      {
+        "strategy": "A* + CSP",
+        "requests": 1000,
+        "routes_delivered": 469,
+        "requests_rejected": 531,
+        "routes_with_violation": 0,
+        "compliant_routes": 469,
+        "violation_rate_pct": 0.0,
+        "restricted_zone_violations": 0,
+        "capacity_violations": 0,
+        "mean_distance_delivered": 509.8,
+        "mean_distance_paired": 509.8,
+        "mean_plan_ms": 0.045
+      }
+    ]
+  },
+  "Experiment 4: A* + CSP vs A* + CSP + GA (ablation: remove GA)": {
+    "exp4_ga": [
+      {
+        "strategy": "Random assignment",
+        "trials": 100,
+        "mean_response_cost": 3774.8,
+        "mean_fitness": 61774.8,
+        "trials_with_violation": 51,
+        "total_violations": 58,
+        "optimal_pct": 5.0,
+        "mean_gap_to_optimal_pct": 3002.49,
+        "mean_time_ms": 0.0
+      },
+      {
+        "strategy": "Greedy (A* + CSP)",
+        "trials": 100,
+        "mean_response_cost": 2154.8,
+        "mean_fitness": 2154.8,
+        "trials_with_violation": 0,
+        "total_violations": 0,
+        "optimal_pct": 85.0,
+        "mean_gap_to_optimal_pct": 2.8,
+        "mean_time_ms": 0.21
+      },
+      {
+        "strategy": "GA (A* + CSP + GA)",
+        "trials": 100,
+        "mean_response_cost": 2082.6,
+        "mean_fitness": 2082.6,
+        "trials_with_violation": 0,
+        "total_violations": 0,
+        "optimal_pct": 100.0,
+        "mean_gap_to_optimal_pct": 0.0,
+        "mean_time_ms": 10.55
+      },
+      {
+        "strategy": "Brute-force optimum",
+        "trials": 100,
+        "mean_response_cost": 2082.6,
+        "mean_fitness": 2082.6,
+        "trials_with_violation": 0,
+        "total_violations": 0,
+        "optimal_pct": 100.0,
+        "mean_gap_to_optimal_pct": 0.0,
+        "mean_time_ms": 0.56
+      }
+    ],
+    "exp4_ga_vs_greedy": [
+      {
+        "comparison": "GA vs greedy",
+        "GA_better": 15,
+        "tie": 85,
+        "GA_worse": 0
+      }
+    ],
+    "exp4_ga_convergence": [
+      {
+        "generation": 1,
+        "mean_gap_pct": 28.682
+      },
+      {
+        "generation": 2,
+        "mean_gap_pct": 4.963
+      },
+      {
+        "generation": 3,
+        "mean_gap_pct": 3.148
+      },
+      {
+        "generation": 4,
+        "mean_gap_pct": 1.637
+      },
+      {
+        "generation": 5,
+        "mean_gap_pct": 0.927
+      },
+      {
+        "generation": 6,
+        "mean_gap_pct": 0.393
+      },
+      {
+        "generation": 7,
+        "mean_gap_pct": 0.258
+      },
+      {
+        "generation": 8,
+        "mean_gap_pct": 0.258
+      },
+      {
+        "generation": 9,
+        "mean_gap_pct": 0.258
+      },
+      {
+        "generation": 10,
+        "mean_gap_pct": 0.121
+      },
+      {
+        "generation": 11,
+        "mean_gap_pct": 0.121
+      },
+      {
+        "generation": 12,
+        "mean_gap_pct": 0.0
+      },
+      {
+        "generation": 13,
+        "mean_gap_pct": 0.0
+      },
+      {
+        "generation": 14,
+        "mean_gap_pct": 0.0
+      },
+      {
+        "generation": 15,
+        "mean_gap_pct": 0.0
+      },
+      {
+        "generation": 16,
+        "mean_gap_pct": 0.0
+      },
+      {
+        "generation": 17,
+        "mean_gap_pct": 0.0
+      },
+      {
+        "generation": 18,
+        "mean_gap_pct": 0.0
+      },
+      {
+        "generation": 19,
+        "mean_gap_pct": 0.0
+      },
+      {
+        "generation": 20,
+        "mean_gap_pct": 0.0
+      },
+      {
+        "generation": 21,
+        "mean_gap_pct": 0.0
+      },
+      {
+        "generation": 22,
+        "mean_gap_pct": 0.0
+      },
+      {
+        "generation": 23,
+        "mean_gap_pct": 0.0
+      },
+      {
+        "generation": 24,
+        "mean_gap_pct": 0.0
+      },
+      {
+        "generation": 25,
+        "mean_gap_pct": 0.0
+      },
+      {
+        "generation": 26,
+        "mean_gap_pct": 0.0
+      },
+      {
+        "generation": 27,
+        "mean_gap_pct": 0.0
+      },
+      {
+        "generation": 28,
+        "mean_gap_pct": 0.0
+      },
+      {
+        "generation": 29,
+        "mean_gap_pct": 0.0
+      },
+      {
+        "generation": 30,
+        "mean_gap_pct": 0.0
+      },
+      {
+        "generation": 31,
+        "mean_gap_pct": 0.0
+      },
+      {
+        "generation": 32,
+        "mean_gap_pct": 0.0
+      },
+      {
+        "generation": 33,
+        "mean_gap_pct": 0.0
+      },
+      {
+        "generation": 34,
+        "mean_gap_pct": 0.0
+      },
+      {
+        "generation": 35,
+        "mean_gap_pct": 0.0
+      },
+      {
+        "generation": 36,
+        "mean_gap_pct": 0.0
+      },
+      {
+        "generation": 37,
+        "mean_gap_pct": 0.0
+      },
+      {
+        "generation": 38,
+        "mean_gap_pct": 0.0
+      },
+      {
+        "generation": 39,
+        "mean_gap_pct": 0.0
+      },
+      {
+        "generation": 40,
+        "mean_gap_pct": 0.0
+      }
+    ]
+  },
+  "Experiment 4b: GA at larger scale (8 agents, 8 incidents)": {
+    "exp4b_ga_scaling": [
+      {
+        "strategy": "Greedy (A* + CSP)",
+        "mean_fitness": 3448.4,
+        "mean_time_ms": 0.75
+      },
+      {
+        "strategy": "GA (population 60, 80 generations)",
+        "mean_fitness": 3325.8,
+        "mean_time_ms": 54.77
+      },
+      {
+        "strategy": "GA improvement over greedy",
+        "mean_fitness": "3.6%",
+        "mean_time_ms": "better 13, tie 14, worse 3 of 30"
+      }
+    ]
+  },
+  "Experiment 5: Security response with vs without minimax (ablation: remove minimax)": {
+    "exp5_minimax": [
+      {
+        "attacker": "greedy",
+        "defender": "idle",
+        "threat_starts": 33,
+        "intercepted_pct": 27.3,
+        "breach_pct": 72.7,
+        "contained_pct": 0.0,
+        "mean_peak_risk": 141.4,
+        "mean_rounds": 1.91,
+        "mean_search_nodes_per_run": "-"
+      },
+      {
+        "attacker": "greedy",
+        "defender": "chase",
+        "threat_starts": 33,
+        "intercepted_pct": 90.9,
+        "breach_pct": 9.1,
+        "contained_pct": 0.0,
+        "mean_peak_risk": 136.5,
+        "mean_rounds": 1.09,
+        "mean_search_nodes_per_run": "-"
+      },
+      {
+        "attacker": "greedy",
+        "defender": "minimax (with)",
+        "threat_starts": 33,
+        "intercepted_pct": 100.0,
+        "breach_pct": 0.0,
+        "contained_pct": 0.0,
+        "mean_peak_risk": 135.0,
+        "mean_rounds": 1.33,
+        "mean_search_nodes_per_run": 315.8
+      },
+      {
+        "attacker": "minimax",
+        "defender": "idle",
+        "threat_starts": 33,
+        "intercepted_pct": 9.1,
+        "breach_pct": 18.2,
+        "contained_pct": 72.7,
+        "mean_peak_risk": 124.1,
+        "mean_rounds": 6.09,
+        "mean_search_nodes_per_run": 388.8
+      },
+      {
+        "attacker": "minimax",
+        "defender": "chase",
+        "threat_starts": 33,
+        "intercepted_pct": 90.9,
+        "breach_pct": 9.1,
+        "contained_pct": 0.0,
+        "mean_peak_risk": 116.2,
+        "mean_rounds": 1.88,
+        "mean_search_nodes_per_run": 29.9
+      },
+      {
+        "attacker": "minimax",
+        "defender": "minimax (with)",
+        "threat_starts": 33,
+        "intercepted_pct": 100.0,
+        "breach_pct": 0.0,
+        "contained_pct": 0.0,
+        "mean_peak_risk": 113.7,
+        "mean_rounds": 2.3,
+        "mean_search_nodes_per_run": 480.0
+      }
+    ],
+    "exp5_pruning": [
+      {
+        "search": "Minimax without pruning",
+        "mean_nodes_evaluated": 1115.2,
+        "same_decision_pct": 100.0
+      },
+      {
+        "search": "Minimax with alpha-beta",
+        "mean_nodes_evaluated": 245.2,
+        "same_decision_pct": 100.0
+      }
+    ]
+  },
+  "Experiment 6: Expert system decision accuracy, consistency and ablation": {
+    "exp6_summary": [
+      {
+        "test": "Scenario decisions match the specification",
+        "result": "5/5"
+      },
+      {
+        "test": "Random states where rule output equals independent specification (300)",
+        "result": "300/300"
+      },
+      {
+        "test": "Random states with identical output on repeat run (300)",
+        "result": "300/300"
+      }
+    ],
+    "exp6_scenarios": [
+      {
+        "scenario": "scenario_1_normal",
+        "expected_actions": "none",
+        "fired_actions": "none",
+        "match": true,
+        "repeat_run_identical": true
+      },
+      {
+        "scenario": "scenario_2_blocked_corridor",
+        "expected_actions": "recalculate_routes",
+        "fired_actions": "recalculate_routes",
+        "match": true,
+        "repeat_run_identical": true
+      },
+      {
+        "scenario": "scenario_3_security_threat",
+        "expected_actions": "dispatch_security, prioritize_emergency_response",
+        "fired_actions": "dispatch_security, prioritize_emergency_response",
+        "match": true,
+        "repeat_run_identical": true
+      },
+      {
+        "scenario": "scenario_4_evacuation",
+        "expected_actions": "activate_evacuation, prioritize_emergency_response",
+        "fired_actions": "activate_evacuation, prioritize_emergency_response",
+        "match": true,
+        "repeat_run_identical": true
+      },
+      {
+        "scenario": "scenario_5_unauthorized_access",
+        "expected_actions": "trigger_security_alert",
+        "fired_actions": "trigger_security_alert",
+        "match": true,
+        "repeat_run_identical": true
+      }
+    ],
+    "exp6_ablation": [
+      {
+        "configuration": "Expert system",
+        "correct_actions": 629,
+        "unneeded_actions": 0,
+        "missed_actions": 0,
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1": 1.0
+      },
+      {
+        "configuration": "No expert system (nothing triggered)",
+        "correct_actions": 0,
+        "unneeded_actions": 0,
+        "missed_actions": 629,
+        "precision": 1.0,
+        "recall": 0.0,
+        "f1": 0.0
+      },
+      {
+        "configuration": "No expert system (trigger everything)",
+        "correct_actions": 629,
+        "unneeded_actions": 1171,
+        "missed_actions": 0,
+        "precision": 0.349,
+        "recall": 1.0,
+        "f1": 0.518
+      }
+    ]
+  },
+  "Experiment 7: Integrated simulation across all scenarios": {
+    "exp7_integrated": [
+      {
+        "scenario": "scenario_1_normal",
+        "rules_fired": 0,
+        "routes_planned": 4,
+        "responders_assigned": 0,
+        "csp_violations": 0,
+        "access_attempts_denied": 0,
+        "threat_outcome": "-",
+        "mean_total_time_ms": 0.5
+      },
+      {
+        "scenario": "scenario_2_blocked_corridor",
+        "rules_fired": 1,
+        "routes_planned": 6,
+        "responders_assigned": 1,
+        "csp_violations": 0,
+        "access_attempts_denied": 0,
+        "threat_outcome": "-",
+        "mean_total_time_ms": 7.6
+      },
+      {
+        "scenario": "scenario_3_security_threat",
+        "rules_fired": 2,
+        "routes_planned": 1,
+        "responders_assigned": 1,
+        "csp_violations": 0,
+        "access_attempts_denied": 0,
+        "threat_outcome": "intercepted",
+        "mean_total_time_ms": 9.5
+      },
+      {
+        "scenario": "scenario_4_evacuation",
+        "rules_fired": 2,
+        "routes_planned": 5,
+        "responders_assigned": 1,
+        "csp_violations": 0,
+        "access_attempts_denied": 0,
+        "threat_outcome": "-",
+        "mean_total_time_ms": 7.3
+      },
+      {
+        "scenario": "scenario_5_unauthorized_access",
+        "rules_fired": 1,
+        "routes_planned": 1,
+        "responders_assigned": 1,
+        "csp_violations": 0,
+        "access_attempts_denied": 1,
+        "threat_outcome": "-",
+        "mean_total_time_ms": 7.5
+      }
+    ]
+  }
+}

@@ -1,0 +1,3 @@
+search,mean_nodes_evaluated,same_decision_pct
+Minimax without pruning,1115.2,100.0
+Minimax with alpha-beta,245.2,100.0

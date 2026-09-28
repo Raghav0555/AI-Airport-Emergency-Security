@@ -1,0 +1,4 @@
+method,pairs,mean_distance,mean_nodes_expanded,mean_time_ms,optimal_paths_pct
+BFS (fewest hops),1560,612.2,21.0,0.009,66.5
+Dijkstra,1560,545.28,21.0,0.026,100.0
+A*,1560,545.28,10.6,0.027,100.0

@@ -1,0 +1,4 @@
+test,result
+Scenario decisions match the specification,5/5
+Random states where rule output equals independent specification (300),300/300
+Random states with identical output on repeat run (300),300/300

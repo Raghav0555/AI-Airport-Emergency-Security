@@ -1,0 +1,5 @@
+strategy,trials,mean_response_cost,mean_fitness,trials_with_violation,total_violations,optimal_pct,mean_gap_to_optimal_pct,mean_time_ms
+Random assignment,100,3774.8,61774.8,51,58,5.0,3002.49,0.0
+Greedy (A* + CSP),100,2154.8,2154.8,0,0,85.0,2.8,0.21
+GA (A* + CSP + GA),100,2082.6,2082.6,0,0,100.0,0.0,10.55
+Brute-force optimum,100,2082.6,2082.6,0,0,100.0,0.0,0.56

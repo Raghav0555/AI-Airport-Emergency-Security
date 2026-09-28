@@ -1,0 +1,7 @@
+attacker,defender,threat_starts,intercepted_pct,breach_pct,contained_pct,mean_peak_risk,mean_rounds,mean_search_nodes_per_run
+greedy,idle,33,27.3,72.7,0.0,141.4,1.91,-
+greedy,chase,33,90.9,9.1,0.0,136.5,1.09,-
+greedy,minimax (with),33,100.0,0.0,0.0,135.0,1.33,315.8
+minimax,idle,33,9.1,18.2,72.7,124.1,6.09,388.8
+minimax,chase,33,90.9,9.1,0.0,116.2,1.88,29.9
+minimax,minimax (with),33,100.0,0.0,0.0,113.7,2.3,480.0

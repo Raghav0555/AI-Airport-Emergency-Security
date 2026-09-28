@@ -1,0 +1,6 @@
+scenario,rules_fired,routes_planned,responders_assigned,csp_violations,access_attempts_denied,threat_outcome,mean_total_time_ms
+scenario_1_normal,0,4,0,0,0,-,0.5
+scenario_2_blocked_corridor,1,6,1,0,0,-,7.6
+scenario_3_security_threat,2,1,1,0,0,intercepted,9.5
+scenario_4_evacuation,2,5,1,0,0,-,7.3
+scenario_5_unauthorized_access,1,1,1,0,1,-,7.5

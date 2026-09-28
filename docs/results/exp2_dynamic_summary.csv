@@ -1,0 +1,3 @@
+strategy,trips,routes_crossing_blocked_node,unsafe_routes_pct,rerouted_successfully,unreachable,mean_extra_distance,mean_replan_ms
+Static plan (no replanning),827,273,33.0,-,-,-,-
+A* with replanning,827,0,0.0,80,193,160.0,0.025
