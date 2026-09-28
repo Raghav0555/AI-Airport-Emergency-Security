@@ -26,22 +26,22 @@ h1 { font-weight: 700; color: #F1F5F9; }
 .mono { font-family: 'JetBrains Mono', monospace; }
 
 .status-strip {
-    display: flex; align-items: center; gap: 28px;
-    padding: 14px 20px; margin: 6px 0 22px 0;
-    background: #111826; border: 1px solid #1F2937; border-radius: 10px;
+.status-strip {
+    display: flex; align-items: stretch; gap: 0;
+    margin: 6px 0 22px 0;
+    background: #111826; border: 1px solid #1F2937; border-radius: 4px;
+    overflow: hidden;
 }
 .status-badge {
-    display: flex; align-items: center; gap: 9px;
-    padding: 6px 14px; border-radius: 999px; font-weight: 600; font-size: 0.9rem;
+    display: flex; align-items: center;
+    padding: 14px 20px; font-family: 'JetBrains Mono', monospace;
+    font-weight: 600; font-size: 0.95rem; letter-spacing: 0.02em;
+    color: #0A0F1C;
 }
-.status-dot { width: 9px; height: 9px; border-radius: 50%; }
-.status-nominal { background: rgba(52,211,153,0.12); color: #34D399; }
-.status-nominal .status-dot { background: #34D399; box-shadow: 0 0 8px #34D399; }
-.status-monitoring { background: rgba(251,191,36,0.12); color: #FBBF24; }
-.status-monitoring .status-dot { background: #FBBF24; box-shadow: 0 0 8px #FBBF24; }
-.status-active { background: rgba(248,113,113,0.14); color: #F87171; }
-.status-active .status-dot { background: #F87171; box-shadow: 0 0 8px #F87171; }
-
+.status-nominal { background: #34D399; }
+.status-monitoring { background: #FBBF24; }
+.status-active { background: #F87171; }
+.status-detail { display: flex; align-items: center; padding: 14px 18px; }
 .kpi { flex: 1; }
 .kpi-label { font-size: 0.78rem; color: #7C8AA3; margin-bottom: 2px; }
 .kpi-value { font-family: 'JetBrains Mono', monospace; font-size: 1.35rem; font-weight: 600; color: #E5E9F0; }
@@ -319,8 +319,8 @@ def render_status_strip(state, result):
     threat = result.minimax_outcome["outcome"] if result.minimax_outcome else "none"
     html = f'''
     <div class="status-strip">
-        <div class="status-badge status-{level}"><div class="status-dot"></div>{label}</div>
-        <div class="mono" style="color:#7C8AA3; font-size:0.85rem;">{detail}</div>
+        <div class="status-badge status-{level}">{label.upper()}</div>
+        <div class="status-detail mono" style="color:#7C8AA3; font-size:0.85rem;">{detail}</div>
         <div style="flex:1"></div>
         <div class="kpi"><div class="kpi-label">Active incidents</div><div class="kpi-value">{len(state.active_incidents)}</div></div>
         <div class="kpi-divider"></div>
