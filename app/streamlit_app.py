@@ -25,24 +25,17 @@ h1 { font-weight: 700; color: #F1F5F9; }
 
 .mono { font-family: 'JetBrains Mono', monospace; }
 
-.status-strip {
-.status-strip {
-    display: flex; align-items: stretch; gap: 0;
-    margin: 6px 0 22px 0;
-    background: #111826; border: 1px solid #1F2937; border-radius: 4px;
-    overflow: hidden;
-}
-.status-badge {
-    display: flex; align-items: center;
-    padding: 14px 20px; font-family: 'JetBrains Mono', monospace;
-    font-weight: 600; font-size: 0.95rem; letter-spacing: 0.02em;
-    color: #0A0F1C;
+div[data-testid="stVerticalBlockBorderWrapper"] { background: #111826; border-color: #1F2937 !important; }
+
+.status-tag {
+    display: inline-block; padding: 8px 16px; border-radius: 3px;
+    font-family: 'JetBrains Mono', monospace; font-weight: 600; font-size: 0.9rem;
+    letter-spacing: 0.02em; color: #0A0F1C;
 }
 .status-nominal { background: #34D399; }
 .status-monitoring { background: #FBBF24; }
 .status-active { background: #F87171; }
-.status-detail { display: flex; align-items: center; padding: 14px 18px; }
-.kpi { flex: 1; }
+
 .kpi-label { font-size: 0.78rem; color: #7C8AA3; margin-bottom: 2px; }
 .kpi-value { font-family: 'JetBrains Mono', monospace; font-size: 1.35rem; font-weight: 600; color: #E5E9F0; }
 .kpi-divider { width: 1px; height: 34px; background: #1F2937; }
@@ -317,22 +310,23 @@ def render_status_strip(state, result):
     level, label, detail = system_status(state, result)
     responders = len(result.ga_assignment["rows"]) if result.ga_assignment else 0
     threat = result.minimax_outcome["outcome"] if result.minimax_outcome else "none"
-    html = f'''
-    <div class="status-strip">
-        <div class="status-badge status-{level}">{label.upper()}</div>
-        <div class="status-detail mono" style="color:#7C8AA3; font-size:0.85rem;">{detail}</div>
-        <div style="flex:1"></div>
-        <div class="kpi"><div class="kpi-label">Active incidents</div><div class="kpi-value">{len(state.active_incidents)}</div></div>
-        <div class="kpi-divider"></div>
-        <div class="kpi"><div class="kpi-label">Blocked nodes</div><div class="kpi-value">{len(state.blocked_nodes)}</div></div>
-        <div class="kpi-divider"></div>
-        <div class="kpi"><div class="kpi-label">Responders deployed</div><div class="kpi-value">{responders}</div></div>
-        <div class="kpi-divider"></div>
-        <div class="kpi"><div class="kpi-label">Threat status</div><div class="kpi-value">{threat}</div></div>
-    </div>
-    '''
-    st.markdown(html, unsafe_allow_html=True)
 
+    with st.container(border=True):
+        badge_col, detail_col, k1, k2, k3, k4 = st.columns([1.3, 2.6, 1, 1, 1.3, 1.2])
+        with badge_col:
+            st.markdown(f'<span class="status-tag status-{level}">{label.upper()}</span>', unsafe_allow_html=True)
+        with detail_col:
+            st.markdown(f'<div class="mono" style="color:#7C8AA3; font-size:0.85rem; padding-top:9px;">{detail}</div>', unsafe_allow_html=True)
+        for col, kpi_label, kpi_value in zip(
+            (k1, k2, k3, k4),
+            ("Active incidents", "Blocked nodes", "Responders deployed", "Threat status"),
+            (len(state.active_incidents), len(state.blocked_nodes), responders, threat),
+        ):
+            with col:
+                st.markdown(
+                    f'<div class="kpi-label">{kpi_label}</div><div class="kpi-value">{kpi_value}</div>',
+                    unsafe_allow_html=True,
+                )
 def main():
     st.title("AI Airport Emergency & Security Management Simulator")
 
