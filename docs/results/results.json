@@ -6,7 +6,7 @@
         "pairs": 1560,
         "mean_distance": 612.2,
         "mean_nodes_expanded": 21.0,
-        "mean_time_ms": 0.009,
+        "mean_time_ms": 0.008,
         "optimal_paths_pct": 66.5
       },
       {
@@ -14,7 +14,7 @@
         "pairs": 1560,
         "mean_distance": 545.28,
         "mean_nodes_expanded": 21.0,
-        "mean_time_ms": 0.026,
+        "mean_time_ms": 0.023,
         "optimal_paths_pct": 100.0
       },
       {
@@ -22,7 +22,7 @@
         "pairs": 1560,
         "mean_distance": 545.28,
         "mean_nodes_expanded": 10.6,
-        "mean_time_ms": 0.027,
+        "mean_time_ms": 0.024,
         "optimal_paths_pct": 100.0
       }
     ]
@@ -47,7 +47,7 @@
         "rerouted_successfully": 80,
         "unreachable": 193,
         "mean_extra_distance": 160.0,
-        "mean_replan_ms": 0.025
+        "mean_replan_ms": 0.026
       }
     ],
     "exp2_dynamic_per_block": [
@@ -57,7 +57,7 @@
         "routes_through_block": 11,
         "unreachable_after_block": 11,
         "mean_extra_distance": "-",
-        "mean_replan_ms": 0.047
+        "mean_replan_ms": 0.063
       },
       {
         "blocked_node": "COR_2",
@@ -65,7 +65,7 @@
         "routes_through_block": 28,
         "unreachable_after_block": 28,
         "mean_extra_distance": "-",
-        "mean_replan_ms": 0.028
+        "mean_replan_ms": 0.031
       },
       {
         "blocked_node": "COR_3",
@@ -73,7 +73,7 @@
         "routes_through_block": 22,
         "unreachable_after_block": 6,
         "mean_extra_distance": 150.0,
-        "mean_replan_ms": 0.019
+        "mean_replan_ms": 0.017
       },
       {
         "blocked_node": "COR_4",
@@ -81,7 +81,7 @@
         "routes_through_block": 20,
         "unreachable_after_block": 0,
         "mean_extra_distance": 180.0,
-        "mean_replan_ms": 0.025
+        "mean_replan_ms": 0.023
       },
       {
         "blocked_node": "COR_5",
@@ -89,7 +89,7 @@
         "routes_through_block": 34,
         "unreachable_after_block": 34,
         "mean_extra_distance": "-",
-        "mean_replan_ms": 0.022
+        "mean_replan_ms": 0.027
       },
       {
         "blocked_node": "COR_6",
@@ -97,7 +97,7 @@
         "routes_through_block": 24,
         "unreachable_after_block": 0,
         "mean_extra_distance": 166.7,
-        "mean_replan_ms": 0.023
+        "mean_replan_ms": 0.022
       },
       {
         "blocked_node": "COR_7",
@@ -105,7 +105,7 @@
         "routes_through_block": 26,
         "unreachable_after_block": 6,
         "mean_extra_distance": 140.0,
-        "mean_replan_ms": 0.02
+        "mean_replan_ms": 0.017
       },
       {
         "blocked_node": "COR_8",
@@ -113,7 +113,7 @@
         "routes_through_block": 31,
         "unreachable_after_block": 31,
         "mean_extra_distance": "-",
-        "mean_replan_ms": 0.022
+        "mean_replan_ms": 0.019
       },
       {
         "blocked_node": "COR_9",
@@ -121,7 +121,7 @@
         "routes_through_block": 16,
         "unreachable_after_block": 16,
         "mean_extra_distance": "-",
-        "mean_replan_ms": 0.03
+        "mean_replan_ms": 0.028
       },
       {
         "blocked_node": "COR_10",
@@ -129,7 +129,7 @@
         "routes_through_block": 11,
         "unreachable_after_block": 11,
         "mean_extra_distance": "-",
-        "mean_replan_ms": 0.047
+        "mean_replan_ms": 0.045
       },
       {
         "blocked_node": "CP_1",
@@ -153,7 +153,7 @@
         "routes_through_block": 14,
         "unreachable_after_block": 14,
         "mean_extra_distance": "-",
-        "mean_replan_ms": 0.029
+        "mean_replan_ms": 0.028
       }
     ]
   },
@@ -171,7 +171,7 @@
         "capacity_violations": 380,
         "mean_distance_delivered": 616.8,
         "mean_distance_paired": 537.9,
-        "mean_plan_ms": 0.009
+        "mean_plan_ms": 0.011
       },
       {
         "strategy": "A* only",
@@ -185,7 +185,7 @@
         "capacity_violations": 414,
         "mean_distance_delivered": 558.9,
         "mean_distance_paired": 490.2,
-        "mean_plan_ms": 0.026
+        "mean_plan_ms": 0.029
       },
       {
         "strategy": "A* + CSP",
@@ -199,7 +199,7 @@
         "capacity_violations": 0,
         "mean_distance_delivered": 509.8,
         "mean_distance_paired": 509.8,
-        "mean_plan_ms": 0.045
+        "mean_plan_ms": 0.056
       }
     ]
   },
@@ -225,7 +225,7 @@
         "total_violations": 0,
         "optimal_pct": 85.0,
         "mean_gap_to_optimal_pct": 2.8,
-        "mean_time_ms": 0.21
+        "mean_time_ms": 0.19
       },
       {
         "strategy": "GA (A* + CSP + GA)",
@@ -236,7 +236,7 @@
         "total_violations": 0,
         "optimal_pct": 100.0,
         "mean_gap_to_optimal_pct": 0.0,
-        "mean_time_ms": 10.55
+        "mean_time_ms": 10.24
       },
       {
         "strategy": "Brute-force optimum",
@@ -247,7 +247,7 @@
         "total_violations": 0,
         "optimal_pct": 100.0,
         "mean_gap_to_optimal_pct": 0.0,
-        "mean_time_ms": 0.56
+        "mean_time_ms": 0.47
       }
     ],
     "exp4_ga_vs_greedy": [
@@ -426,12 +426,12 @@
       {
         "strategy": "Greedy (A* + CSP)",
         "mean_fitness": 3448.4,
-        "mean_time_ms": 0.75
+        "mean_time_ms": 0.92
       },
       {
         "strategy": "GA (population 60, 80 generations)",
         "mean_fitness": 3325.8,
-        "mean_time_ms": 54.77
+        "mean_time_ms": 59.67
       },
       {
         "strategy": "GA improvement over greedy",
@@ -614,7 +614,7 @@
         "csp_violations": 0,
         "access_attempts_denied": 0,
         "threat_outcome": "-",
-        "mean_total_time_ms": 0.5
+        "mean_total_time_ms": 0.3
       },
       {
         "scenario": "scenario_2_blocked_corridor",
@@ -624,7 +624,7 @@
         "csp_violations": 0,
         "access_attempts_denied": 0,
         "threat_outcome": "-",
-        "mean_total_time_ms": 7.6
+        "mean_total_time_ms": 9.2
       },
       {
         "scenario": "scenario_3_security_threat",
@@ -634,7 +634,7 @@
         "csp_violations": 0,
         "access_attempts_denied": 0,
         "threat_outcome": "intercepted",
-        "mean_total_time_ms": 9.5
+        "mean_total_time_ms": 9.9
       },
       {
         "scenario": "scenario_4_evacuation",
@@ -644,7 +644,7 @@
         "csp_violations": 0,
         "access_attempts_denied": 0,
         "threat_outcome": "-",
-        "mean_total_time_ms": 7.3
+        "mean_total_time_ms": 7.1
       },
       {
         "scenario": "scenario_5_unauthorized_access",
@@ -654,7 +654,7 @@
         "csp_violations": 0,
         "access_attempts_denied": 1,
         "threat_outcome": "-",
-        "mean_total_time_ms": 7.5
+        "mean_total_time_ms": 6.9
       }
     ]
   }

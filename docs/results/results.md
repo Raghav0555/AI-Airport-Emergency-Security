@@ -10,9 +10,9 @@ All 1560 ordered node pairs on the unblocked airport graph.
 
 | method | pairs | mean_distance | mean_nodes_expanded | mean_time_ms | optimal_paths_pct |
 |---|---|---|---|---|---|
-| BFS (fewest hops) | 1560 | 612.2 | 21.0 | 0.009 | 66.5 |
-| Dijkstra | 1560 | 545.28 | 21.0 | 0.026 | 100.0 |
-| A* | 1560 | 545.28 | 10.6 | 0.027 | 100.0 |
+| BFS (fewest hops) | 1560 | 612.2 | 21.0 | 0.008 | 66.5 |
+| Dijkstra | 1560 | 545.28 | 21.0 | 0.023 | 100.0 |
+| A* | 1560 | 545.28 | 10.6 | 0.024 | 100.0 |
 
 ## Experiment 2: A* with vs without dynamic obstacle handling
 
@@ -23,25 +23,25 @@ Each corridor or checkpoint is blocked one at a time. Trips are every agent to e
 | strategy | trips | routes_crossing_blocked_node | unsafe_routes_pct | rerouted_successfully | unreachable | mean_extra_distance | mean_replan_ms |
 |---|---|---|---|---|---|---|---|
 | Static plan (no replanning) | 827 | 273 | 33.0 | - | - | - | - |
-| A* with replanning | 827 | 0 | 0.0 | 80 | 193 | 160.0 | 0.025 |
+| A* with replanning | 827 | 0 | 0.0 | 80 | 193 | 160.0 | 0.026 |
 
 **exp2_dynamic_per_block**
 
 | blocked_node | trips | routes_through_block | unreachable_after_block | mean_extra_distance | mean_replan_ms |
 |---|---|---|---|---|---|
-| COR_1 | 65 | 11 | 11 | - | 0.047 |
-| COR_2 | 65 | 28 | 28 | - | 0.028 |
-| COR_3 | 65 | 22 | 6 | 150.0 | 0.019 |
-| COR_4 | 65 | 20 | 0 | 180.0 | 0.025 |
-| COR_5 | 65 | 34 | 34 | - | 0.022 |
-| COR_6 | 65 | 24 | 0 | 166.7 | 0.023 |
-| COR_7 | 65 | 26 | 6 | 140.0 | 0.02 |
-| COR_8 | 65 | 31 | 31 | - | 0.022 |
-| COR_9 | 65 | 16 | 16 | - | 0.03 |
-| COR_10 | 65 | 11 | 11 | - | 0.047 |
+| COR_1 | 65 | 11 | 11 | - | 0.063 |
+| COR_2 | 65 | 28 | 28 | - | 0.031 |
+| COR_3 | 65 | 22 | 6 | 150.0 | 0.017 |
+| COR_4 | 65 | 20 | 0 | 180.0 | 0.023 |
+| COR_5 | 65 | 34 | 34 | - | 0.027 |
+| COR_6 | 65 | 24 | 0 | 166.7 | 0.022 |
+| COR_7 | 65 | 26 | 6 | 140.0 | 0.017 |
+| COR_8 | 65 | 31 | 31 | - | 0.019 |
+| COR_9 | 65 | 16 | 16 | - | 0.028 |
+| COR_10 | 65 | 11 | 11 | - | 0.045 |
 | CP_1 | 59 | 14 | 14 | - | 0.029 |
 | CP_2 | 59 | 22 | 22 | - | 0.018 |
-| CP_3 | 59 | 14 | 14 | - | 0.029 |
+| CP_3 | 59 | 14 | 14 | - | 0.028 |
 
 ## Experiment 3: Baseline vs A* vs A* + CSP (ablation: remove CSP)
 
@@ -51,9 +51,9 @@ Each corridor or checkpoint is blocked one at a time. Trips are every agent to e
 
 | strategy | requests | routes_delivered | requests_rejected | routes_with_violation | compliant_routes | violation_rate_pct | restricted_zone_violations | capacity_violations | mean_distance_delivered | mean_distance_paired | mean_plan_ms |
 |---|---|---|---|---|---|---|---|---|---|---|---|
-| Baseline BFS | 1000 | 845 | 155 | 415 | 430 | 49.1 | 100 | 380 | 616.8 | 537.9 | 0.009 |
-| A* only | 1000 | 845 | 155 | 427 | 418 | 50.5 | 100 | 414 | 558.9 | 490.2 | 0.026 |
-| A* + CSP | 1000 | 469 | 531 | 0 | 469 | 0.0 | 0 | 0 | 509.8 | 509.8 | 0.045 |
+| Baseline BFS | 1000 | 845 | 155 | 415 | 430 | 49.1 | 100 | 380 | 616.8 | 537.9 | 0.011 |
+| A* only | 1000 | 845 | 155 | 427 | 418 | 50.5 | 100 | 414 | 558.9 | 490.2 | 0.029 |
+| A* + CSP | 1000 | 469 | 531 | 0 | 469 | 0.0 | 0 | 0 | 509.8 | 509.8 | 0.056 |
 
 ## Experiment 4: A* + CSP vs A* + CSP + GA (ablation: remove GA)
 
@@ -64,9 +64,9 @@ Each corridor or checkpoint is blocked one at a time. Trips are every agent to e
 | strategy | trials | mean_response_cost | mean_fitness | trials_with_violation | total_violations | optimal_pct | mean_gap_to_optimal_pct | mean_time_ms |
 |---|---|---|---|---|---|---|---|---|
 | Random assignment | 100 | 3774.8 | 61774.8 | 51 | 58 | 5.0 | 3002.49 | 0.0 |
-| Greedy (A* + CSP) | 100 | 2154.8 | 2154.8 | 0 | 0 | 85.0 | 2.8 | 0.21 |
-| GA (A* + CSP + GA) | 100 | 2082.6 | 2082.6 | 0 | 0 | 100.0 | 0.0 | 10.55 |
-| Brute-force optimum | 100 | 2082.6 | 2082.6 | 0 | 0 | 100.0 | 0.0 | 0.56 |
+| Greedy (A* + CSP) | 100 | 2154.8 | 2154.8 | 0 | 0 | 85.0 | 2.8 | 0.19 |
+| GA (A* + CSP + GA) | 100 | 2082.6 | 2082.6 | 0 | 0 | 100.0 | 0.0 | 10.24 |
+| Brute-force optimum | 100 | 2082.6 | 2082.6 | 0 | 0 | 100.0 | 0.0 | 0.47 |
 
 **exp4_ga_vs_greedy**
 
@@ -90,8 +90,8 @@ Each corridor or checkpoint is blocked one at a time. Trips are every agent to e
 
 | strategy | mean_fitness | mean_time_ms |
 |---|---|---|
-| Greedy (A* + CSP) | 3448.4 | 0.75 |
-| GA (population 60, 80 generations) | 3325.8 | 54.77 |
+| Greedy (A* + CSP) | 3448.4 | 0.92 |
+| GA (population 60, 80 generations) | 3325.8 | 59.67 |
 | GA improvement over greedy | 3.6% | better 13, tie 14, worse 3 of 30 |
 
 ## Experiment 5: Security response with vs without minimax (ablation: remove minimax)
@@ -154,8 +154,8 @@ Full pipeline (expert system, A*, CSP, GA, minimax) run 10 times per scenario.
 
 | scenario | rules_fired | routes_planned | responders_assigned | csp_violations | access_attempts_denied | threat_outcome | mean_total_time_ms |
 |---|---|---|---|---|---|---|---|
-| scenario_1_normal | 0 | 4 | 0 | 0 | 0 | - | 0.5 |
-| scenario_2_blocked_corridor | 1 | 6 | 1 | 0 | 0 | - | 7.6 |
-| scenario_3_security_threat | 2 | 1 | 1 | 0 | 0 | intercepted | 9.5 |
-| scenario_4_evacuation | 2 | 5 | 1 | 0 | 0 | - | 7.3 |
-| scenario_5_unauthorized_access | 1 | 1 | 1 | 0 | 1 | - | 7.5 |
+| scenario_1_normal | 0 | 4 | 0 | 0 | 0 | - | 0.3 |
+| scenario_2_blocked_corridor | 1 | 6 | 1 | 0 | 0 | - | 9.2 |
+| scenario_3_security_threat | 2 | 1 | 1 | 0 | 0 | intercepted | 9.9 |
+| scenario_4_evacuation | 2 | 5 | 1 | 0 | 0 | - | 7.1 |
+| scenario_5_unauthorized_access | 1 | 1 | 1 | 0 | 1 | - | 6.9 |
