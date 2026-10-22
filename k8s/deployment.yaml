@@ -1,0 +1,41 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: aies-app
+  labels:
+    app: aies-app
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: aies-app
+  template:
+    metadata:
+      labels:
+        app: aies-app
+    spec:
+      containers:
+        - name: aies-app
+          image: raghav1089/aies-app:latest
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 8501
+          readinessProbe:
+            httpGet:
+              path: /_stcore/health
+              port: 8501
+            initialDelaySeconds: 15
+            periodSeconds: 10
+          livenessProbe:
+            httpGet:
+              path: /_stcore/health
+              port: 8501
+            initialDelaySeconds: 30
+            periodSeconds: 20
+          resources:
+            requests:
+              memory: "256Mi"
+              cpu: "100m"
+            limits:
+              memory: "768Mi"
+              cpu: "500m"
