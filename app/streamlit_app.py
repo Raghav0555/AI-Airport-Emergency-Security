@@ -12,6 +12,8 @@ from src.world.graph_loader import load_airport_graph, node_positions
 from src.world.scenario_loader import build_initial_state, load_scenarios
 
 st.set_page_config(page_title="AI Airport Emergency & Security Simulator", layout="wide")
+APP_VERSION = "1.0.0"
+st.sidebar.caption(f"App version {APP_VERSION}")
 STYLE = """
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap');
