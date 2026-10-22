@@ -1,0 +1,11 @@
+__pycache__/
+*.pyc
+.git
+.gitignore
+.vscode/
+.venv/
+venv/
+docs/
+*.md
+Jenkinsfile
+k8s/
