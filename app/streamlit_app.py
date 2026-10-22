@@ -12,7 +12,7 @@ from src.world.graph_loader import load_airport_graph, node_positions
 from src.world.scenario_loader import build_initial_state, load_scenarios
 
 st.set_page_config(page_title="AI Airport Emergency & Security Simulator", layout="wide")
-APP_VERSION = "2.0.0"
+APP_VERSION = "3.0.0"
 st.sidebar.caption(f"App version {APP_VERSION}")
 STYLE = """
 <style>
